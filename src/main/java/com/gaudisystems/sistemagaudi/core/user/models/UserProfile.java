@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.core.user;
+package com.gaudisystems.sistemagaudi.core.user.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

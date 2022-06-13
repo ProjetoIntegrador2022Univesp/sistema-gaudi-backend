@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.gaudisystems.sistemagaudi.core.user.UserModel;
-import com.gaudisystems.sistemagaudi.core.user.UserRepository;
+import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
+import com.gaudisystems.sistemagaudi.core.user.repositories.UserRepository;
 
 @Service
 public class AuthenticationService implements UserDetailsService{

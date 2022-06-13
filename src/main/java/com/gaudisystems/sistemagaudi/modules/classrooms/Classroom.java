@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.gaudisystems.sistemagaudi.core.user.UserModel;
+import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
 import com.gaudisystems.sistemagaudi.core.utils.Weekday;
 import com.gaudisystems.sistemagaudi.modules.courses.CourseModule;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
