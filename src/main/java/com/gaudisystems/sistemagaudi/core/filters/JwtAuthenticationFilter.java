@@ -12,8 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.gaudisystems.sistemagaudi.core.authentication.JwtTokenService;
-import com.gaudisystems.sistemagaudi.core.user.UserModel;
-import com.gaudisystems.sistemagaudi.core.user.UserRepository;
+import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
+import com.gaudisystems.sistemagaudi.core.user.repositories.UserRepository;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 

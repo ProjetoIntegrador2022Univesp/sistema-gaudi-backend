@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.core.user;
+package com.gaudisystems.sistemagaudi.core.user.models;
 
 import java.util.ArrayList;
 import java.util.Collection;

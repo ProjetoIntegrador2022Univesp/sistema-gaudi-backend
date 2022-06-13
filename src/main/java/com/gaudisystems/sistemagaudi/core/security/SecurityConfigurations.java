@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.gaudisystems.sistemagaudi.core.authentication.AuthenticationService;
 import com.gaudisystems.sistemagaudi.core.authentication.JwtTokenService;
 import com.gaudisystems.sistemagaudi.core.filters.JwtAuthenticationFilter;
-import com.gaudisystems.sistemagaudi.core.user.UserRepository;
+import com.gaudisystems.sistemagaudi.core.user.repositories.UserRepository;
 
 @EnableWebSecurity
 @Configuration
