@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.core.user.models;
+package com.gaudisystems.sistemagaudi.core.roles;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,16 +13,27 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class UserProfile  implements GrantedAuthority {
+public class UserRole  implements GrantedAuthority {
+
+    private static final long serialVersionUID = 1L;
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String name;
 
+
     @Override
     public String getAuthority() {
         return name;
+    }
+
+    UserRole(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public UserRole() {
     }
     
 }

@@ -3,8 +3,8 @@ package com.gaudisystems.sistemagaudi.core.user.controllers.dtos;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.gaudisystems.sistemagaudi.core.roles.UserRole;
 import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
-import com.gaudisystems.sistemagaudi.core.utils.Role;
 
 import lombok.Getter;
 
@@ -13,7 +13,7 @@ public class UserDto{
     private Long id;
     private String name;
     private String email;
-    private Role role;
+    private List<UserRole> roles;
 
     
 
@@ -21,7 +21,7 @@ public class UserDto{
         this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
-        this.role = user.getRole();
+        this.roles = user.getUserRoles();
 
     }
 

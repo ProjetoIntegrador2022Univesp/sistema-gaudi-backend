@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +16,7 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.gaudisystems.sistemagaudi.core.utils.Role;
+import com.gaudisystems.sistemagaudi.core.roles.UserRole;
 import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
 
 import lombok.Data;
@@ -33,28 +31,26 @@ public class UserModel implements UserDetails{
     private String name;
     private String email;
     private String password;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<UserProfile> userProfile = new ArrayList<>();
-    @ManyToMany(mappedBy = "teachers", cascade = CascadeType.ALL)
-    private List<Classroom> classrooms = new ArrayList<>();
+    private List<UserRole> userRoles = new ArrayList<>();
+
 
     public UserModel() {
     }
 
-    public UserModel(String name, String email, String password, Role role) {
+    public UserModel(String name, String email, String password, List<UserRole> roles) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.userRoles = roles;
 
 
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.userProfile;
+        return this.userRoles;
     }
 
     @Override
