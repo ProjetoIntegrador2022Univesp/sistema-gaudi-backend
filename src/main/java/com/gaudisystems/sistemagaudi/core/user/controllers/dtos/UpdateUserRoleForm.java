@@ -3,10 +3,7 @@ package com.gaudisystems.sistemagaudi.core.user.controllers.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
 
 import com.gaudisystems.sistemagaudi.core.roles.UserRole;
 import com.gaudisystems.sistemagaudi.core.roles.UserRoleRepository;

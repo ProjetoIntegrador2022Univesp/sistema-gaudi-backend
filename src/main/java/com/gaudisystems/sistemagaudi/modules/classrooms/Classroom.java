@@ -10,13 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
 import com.gaudisystems.sistemagaudi.core.utils.Weekday;
-import com.gaudisystems.sistemagaudi.modules.courses.CourseModule;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
 import lombok.Data;
@@ -34,8 +32,6 @@ public class Classroom {
     private List<Student> students;
     private LocalDate startDate;
     private LocalDate endDate;
-    @ManyToOne
-    private CourseModule courseModule;
     @ManyToMany
     private List<UserModel> teachers;
     private String startTime;
@@ -47,7 +43,7 @@ public class Classroom {
     }
 
     public Classroom(String codeCourse, String name, String description, List<Student> students, LocalDate startDate,
-            LocalDate endDate, CourseModule courseModule, List<UserModel> teachers, String startTime, String endTime,
+            LocalDate endDate,  List<UserModel> teachers, String startTime, String endTime,
             Weekday weekday) {
         this.codeCourse = codeCourse;
         this.name = name;
@@ -55,7 +51,6 @@ public class Classroom {
         this.students = students;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.courseModule = courseModule;
         this.teachers = teachers;
         this.startTime = startTime;
         this.endTime = endTime;
