@@ -7,19 +7,15 @@ import javax.persistence.Id;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class UserRole  implements GrantedAuthority {
 
-    private static final long serialVersionUID = 1L;
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
+    private long id;
     private String name;
 
 
@@ -28,12 +24,13 @@ public class UserRole  implements GrantedAuthority {
         return name;
     }
 
-    UserRole(long id, String name) {
-        this.id = id;
+    public UserRole() {
+    }
+
+    public UserRole(String name) {
         this.name = name;
     }
 
-    public UserRole() {
-    }
+    
     
 }

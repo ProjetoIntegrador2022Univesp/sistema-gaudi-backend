@@ -11,7 +11,6 @@ import org.hibernate.validator.constraints.Length;
 
 import com.gaudisystems.sistemagaudi.core.roles.UserRole;
 import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
-import com.gaudisystems.sistemagaudi.core.utils.Role;
 
 import lombok.Getter;
 

@@ -49,7 +49,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         .antMatchers("/h2-console/**").permitAll()
         .anyRequest().authenticated()
         .and().csrf().disable()
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .headers().frameOptions().disable()
+        .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().addFilterBefore(new JwtAuthenticationFilter(tokenService, userRepository) , UsernamePasswordAuthenticationFilter.class);
     }
     
@@ -65,9 +66,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
+public PasswordEncoder encoder() {
+    return new BCryptPasswordEncoder();
+}
 
 
    
