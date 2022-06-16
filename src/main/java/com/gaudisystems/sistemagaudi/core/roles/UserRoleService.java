@@ -16,11 +16,16 @@ public class UserRoleService {
         return repository.findAll();
     }
 
-    public Optional<UserRole> findById(Long id) {
-        return null;
+    public UserRole findById(Long id) {
+        Optional<UserRole> userRole = repository.findById(id);
+        if (!userRole.isPresent()) {
+            throw new UserRoleNotFoundException(id);
+        }
+        return userRole.get();
     }
 
     public void save(UserRole role) {
+        repository.save(role);
     }
 
 }

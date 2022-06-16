@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,20 +36,19 @@ public class UserRoleController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserRole> findById(@PathVariable Long id) {
-        Optional<UserRole> role = service.findById(id);
-        if(!role.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(role.get());
+        UserRole role = service.findById(id);
+       
+        return ResponseEntity.ok(role);
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity<UserRole> save(@RequestBody UserRole role, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<UserRoleDto> save(@RequestBody @Valid UserRoleForm form, UriComponentsBuilder uriBuilder) {
+        UserRole role = form.toUserRole();
         service.save(role);
 
         URI uri = uriBuilder.path("/roles/{id}").buildAndExpand(role.getId()).toUri();
-        return ResponseEntity.created(uri).body(new UserRole(role.getId(), role.getName()));
+        return ResponseEntity.created(uri).body(new UserRoleDto(role));
         
     }
     
