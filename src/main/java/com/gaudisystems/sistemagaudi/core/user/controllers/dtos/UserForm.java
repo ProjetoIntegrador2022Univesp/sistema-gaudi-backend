@@ -1,11 +1,15 @@
 package com.gaudisystems.sistemagaudi.core.user.controllers.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.gaudisystems.sistemagaudi.core.roles.UserRole;
 import com.gaudisystems.sistemagaudi.core.user.models.UserModel;
 import com.gaudisystems.sistemagaudi.core.utils.Role;
 
@@ -20,10 +24,10 @@ public class UserForm {
     @NotNull @NotBlank @Length(min = 3, max = 50) 
     private String password;
     @NotNull
-    private Role role;
+    private List<UserRole> userProfile = new ArrayList<>();
 
     public UserModel convert() {
-        return new UserModel(name, email, password, role);
+        return new UserModel(name, email, password, userProfile);
     }
 }
 
