@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.gaudisystems.sistemagaudi.modules.classrooms.models.Classroom;
 import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 
 import lombok.Data;
@@ -25,6 +27,9 @@ public class CourseModule {
     @ManyToOne
     @JsonBackReference
     private Course course;
+    @OneToMany(mappedBy = "courseModule")
+    @JsonManagedReference
+    private List<Classroom> classrooms;
 
     public CourseModule() {
     }
@@ -32,6 +37,7 @@ public class CourseModule {
     public CourseModule(String name, Course course, List<Classroom> classroom) {
         this.name = name;
         this.course = course;
+        this.classrooms = classroom;
     }
 
     public CourseModule(String name, Course course) {
