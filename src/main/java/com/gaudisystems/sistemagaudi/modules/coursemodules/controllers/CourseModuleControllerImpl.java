@@ -73,7 +73,7 @@ public class CourseModuleControllerImpl implements CourseModuleController {
 
     @Override
     @GetMapping("/course/{id}")
-    public List<CourseModule> findByCourse(long id) {
+    public List<CourseModule> findByCourse(@PathVariable long id) {
         return service.findByCourse(id);
     }
 
