@@ -1,7 +1,6 @@
 package com.gaudisystems.sistemagaudi.core.user.controllers;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.gaudisystems.sistemagaudi.core.roles.UserRole;
 import com.gaudisystems.sistemagaudi.core.roles.UserRoleRepository;
-import com.gaudisystems.sistemagaudi.core.roles.UserRoleService;
 import com.gaudisystems.sistemagaudi.core.user.controllers.dtos.UpdateUserForm;
-import com.gaudisystems.sistemagaudi.core.user.controllers.dtos.UpdateUserRole;
 import com.gaudisystems.sistemagaudi.core.user.controllers.dtos.UpdateUserRoleForm;
 import com.gaudisystems.sistemagaudi.core.user.controllers.dtos.UserDto;
 import com.gaudisystems.sistemagaudi.core.user.controllers.dtos.UserForm;

@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.student.controllers.dtos;
+package com.gaudisystems.sistemagaudi.modules.student.controllers.forms;
 
 import java.util.List;
 

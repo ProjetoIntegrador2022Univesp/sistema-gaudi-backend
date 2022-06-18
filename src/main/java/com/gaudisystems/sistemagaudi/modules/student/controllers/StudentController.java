@@ -23,8 +23,8 @@ import com.gaudisystems.sistemagaudi.modules.guardian.controllers.dtos.GuardianF
 import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 import com.gaudisystems.sistemagaudi.modules.guardian.repositories.GuardianRepository;
 import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentDto;
-import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentForm;
-import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.UpdateStudentForm;
+import com.gaudisystems.sistemagaudi.modules.student.controllers.forms.StudentForm;
+import com.gaudisystems.sistemagaudi.modules.student.controllers.forms.UpdateStudentForm;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 import com.gaudisystems.sistemagaudi.modules.student.repositories.StudentRepository;
 import com.gaudisystems.sistemagaudi.modules.student.services.StudentService;

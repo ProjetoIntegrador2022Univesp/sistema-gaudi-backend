@@ -1,12 +1,9 @@
 package com.gaudisystems.sistemagaudi.modules.courses;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -20,8 +17,6 @@ public class Course {
     private Long id;
     private String name;
     private String description;
-    @OneToMany(mappedBy = "course")
-    private List<CourseModule> modules;
     private int minimalAge;
 
 }
