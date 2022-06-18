@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
-import com.gaudisystems.sistemagaudi.modules.courses.Course;
+import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 
 import lombok.Data;
 

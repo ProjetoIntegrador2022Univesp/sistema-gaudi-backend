@@ -59,7 +59,7 @@ public class CourseModuleServiceImpl implements CourseModuleService {
         if(!optional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        repository.deleteById(optional.get());
+        repository.deleteById(optional.get().getId());
         return ResponseEntity.noContent().build();
         
     }

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
 import com.gaudisystems.sistemagaudi.modules.coursemodules.models.CourseModule;
-import com.gaudisystems.sistemagaudi.modules.courses.Course;
+import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 
 import lombok.Getter;
 
