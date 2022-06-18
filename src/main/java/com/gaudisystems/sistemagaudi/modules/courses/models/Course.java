@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gaudisystems.sistemagaudi.modules.coursemodules.models.CourseModule;
 
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Course {
     private String name;
     private String description;
 	@OneToMany(mappedBy = "course")
+	@JsonManagedReference
 	private List<CourseModule> courseModules;
 
 	public Course() {

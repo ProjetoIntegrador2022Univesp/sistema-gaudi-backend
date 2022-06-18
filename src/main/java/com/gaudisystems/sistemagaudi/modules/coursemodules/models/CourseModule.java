@@ -7,13 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
 import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 
@@ -28,9 +23,8 @@ public class CourseModule {
     private long id;
     private String name;
     @ManyToOne
+    @JsonBackReference
     private Course course;
-    @OneToMany
-    private List<Classroom> classroom;
 
     public CourseModule() {
     }
@@ -38,7 +32,6 @@ public class CourseModule {
     public CourseModule(String name, Course course, List<Classroom> classroom) {
         this.name = name;
         this.course = course;
-        this.classroom = classroom;
     }
 
     public CourseModule(String name, Course course) {
