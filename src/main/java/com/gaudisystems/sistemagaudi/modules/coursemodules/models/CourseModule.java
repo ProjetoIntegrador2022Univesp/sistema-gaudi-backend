@@ -8,17 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
 import com.gaudisystems.sistemagaudi.modules.courses.Course;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 
-@Getter
-@Setter
 @Entity
+@Data
 public class CourseModule {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +39,11 @@ public class CourseModule {
         this.name = name;
         this.course = course;
         this.classroom = classroom;
+    }
+
+    public CourseModule(String name, Course course) {
+        this.name = name;
+        this.course = course;
     }
 
 }

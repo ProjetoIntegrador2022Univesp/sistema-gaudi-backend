@@ -6,5 +6,9 @@ import com.gaudisystems.sistemagaudi.modules.coursemodules.models.CourseModule;
 
 public interface CourseModuleRepository extends JpaRepository<CourseModule, Long> {
 
+    void deleteById(CourseModule courseModule);
+
+    Iterable<CourseModule> findByCourseId(long id);
+
     
 }
