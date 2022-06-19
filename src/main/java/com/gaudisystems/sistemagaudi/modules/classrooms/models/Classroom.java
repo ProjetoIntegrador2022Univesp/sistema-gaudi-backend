@@ -47,9 +47,10 @@ public class Classroom {
     public Classroom() {
     }
 
-    public Classroom(String codeCourse, String name, String description, List<Student> students, LocalDate startDate,
+    public Classroom(String name, String description, List<Student> students, LocalDate startDate,
             LocalDate endDate,  List<UserModel> teachers, String startTime, String endTime,
             Weekday weekday, CourseModule courseModule) {
+                
         this.name = name;
         this.description = description;
         this.students = students;
@@ -61,5 +62,7 @@ public class Classroom {
         this.weekday = weekday;
         this.courseModule = courseModule;
     }
+
+   
 
 }
