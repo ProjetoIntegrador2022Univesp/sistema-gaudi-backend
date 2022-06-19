@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.gaudisystems.sistemagaudi.modules.address.Address;
-import com.gaudisystems.sistemagaudi.modules.classrooms.Classroom;
+import com.gaudisystems.sistemagaudi.modules.classrooms.models.Classroom;
 import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 
 import lombok.Data;
