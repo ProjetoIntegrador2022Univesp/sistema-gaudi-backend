@@ -62,5 +62,11 @@ public class ClassroomControllerImpl implements ClassroomController {
     public ResponseEntity<Void> delete(@PathVariable long id) {
         return service.delete(id);
     }
+
+    @Transactional
+    @PutMapping("/{id}/students")
+    public ResponseEntity<ClassroomDto> saveClassroomStudents (@PathVariable @Valid long classroomId, @RequestBody List<Long> studentsIds) {
+        return service.saveClassroomStudents(classroomId, studentsIds);
+    }
     
 }

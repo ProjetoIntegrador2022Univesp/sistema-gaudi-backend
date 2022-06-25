@@ -13,7 +13,7 @@ import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 import com.gaudisystems.sistemagaudi.modules.student.repositories.StudentRepository;
 
 @Service
-public class StudentService implements ApplicationService {
+public class StudentServiceImpl implements ApplicationService {
 
     @Autowired
     private StudentRepository repository;

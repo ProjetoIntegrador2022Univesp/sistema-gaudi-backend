@@ -27,33 +27,34 @@ import com.gaudisystems.sistemagaudi.modules.student.controllers.forms.StudentFo
 import com.gaudisystems.sistemagaudi.modules.student.controllers.forms.UpdateStudentForm;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 import com.gaudisystems.sistemagaudi.modules.student.repositories.StudentRepository;
-import com.gaudisystems.sistemagaudi.modules.student.services.StudentService;
+import com.gaudisystems.sistemagaudi.modules.student.services.StudentServiceImpl;
 
 @RestController
 @RequestMapping("/students")
-public class StudentController {
+public class StudentControllerImpl  implements IStudentController{
 
     @Autowired
-    private StudentService service;
+    private StudentServiceImpl service;
     @Autowired
     private StudentRepository repository;
     @Autowired
     private GuardianRepository guardianRepository;
     
-    
+    @Override
     @GetMapping
     public List<StudentDto> findAll() {
        return service.findAll();
     }
 
+    @Override
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDto> findById(@PathVariable Long id) {
+    public ResponseEntity<StudentDto> findById(@PathVariable long id) {
         return service.findById(id);
-
     }
-
-    @PostMapping
+    
+    @Override
     @Transactional
+    @PostMapping
     public ResponseEntity<StudentDto> save(@RequestBody @Valid StudentForm studentForm, UriComponentsBuilder uriBuilder) {
         Student student = studentForm.toStudent();
 
@@ -69,9 +70,10 @@ public class StudentController {
         
     }
 
-    @PutMapping("/{id}")
+    @Override
     @Transactional
-    public ResponseEntity<StudentDto> update(@PathVariable Long id, @RequestBody @Valid UpdateStudentForm form) {
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentDto> update(@PathVariable long id, @RequestBody @Valid UpdateStudentForm form) {
         Optional<Student> optional = repository.findById(id);
         if(!optional.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -80,9 +82,10 @@ public class StudentController {
         return ResponseEntity.ok(new StudentDto(student)); 
     }
 
-    @DeleteMapping("/{id}")
+    @Override  
     @Transactional
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         Optional<Student> optional = repository.findById(id);
         if(!optional.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -90,6 +93,10 @@ public class StudentController {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+   
+  
+   
 
 }
 

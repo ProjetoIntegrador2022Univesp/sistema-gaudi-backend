@@ -8,12 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gaudisystems.sistemagaudi.modules.address.Address;
 import com.gaudisystems.sistemagaudi.modules.classrooms.models.Classroom;
+import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;
 import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 
 import lombok.Data;
@@ -30,13 +31,20 @@ public class Student {
     private String cpf;
     private String rg;
     private String phone;
+    private String birthdate;
+
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Address> addresses;
-    private String birthdate;
-    @ManyToMany
+
+    @ManyToMany(mappedBy = "students", cascade = CascadeType.ALL)
     private List<Guardian> guardian;
-    @ManyToOne
-    private Classroom classroom;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Classroom> classroom;
+
+    @OneToMany(mappedBy = "student")
+    private List<Contract> contract;
+
 
     public Student() {
     }
