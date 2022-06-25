@@ -3,6 +3,8 @@ package com.gaudisystems.sistemagaudi.modules.classrooms.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ import com.gaudisystems.sistemagaudi.modules.classrooms.models.Classroom;
 import com.gaudisystems.sistemagaudi.modules.classrooms.repositories.ClassroomRepository;
 import com.gaudisystems.sistemagaudi.modules.coursemodules.dtos.CourseModuleDto;
 import com.gaudisystems.sistemagaudi.modules.coursemodules.services.CourseModuleService;
+import com.gaudisystems.sistemagaudi.modules.student.models.Student;
+import com.gaudisystems.sistemagaudi.modules.student.repositories.StudentRepository;
 
 @Service
 public class ClassroomServiceImpl implements ClassroomService {
@@ -23,6 +27,8 @@ public class ClassroomServiceImpl implements ClassroomService {
     private ClassroomRepository repository;
     @Autowired
     private CourseModuleService courseModuleService;
+    @Autowired
+    private StudentRepository studentRepository;
 
     @Override
     public List<Classroom> findAll() {
@@ -75,6 +81,27 @@ public class ClassroomServiceImpl implements ClassroomService {
         }
         repository.deleteById(optional.get().getId());
         return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<ClassroomDto> saveClassroomStudents(@Valid long classroomId, @Valid List<Long> studenstIds) {
+        Optional<Classroom> optional = repository.findById(classroomId);
+        if(!optional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        Classroom classroom = optional.get();
+
+        for (Long studentId : studenstIds) {
+            Optional<Student> optionalStudent = studentRepository.findById(studentId);
+            
+            if(!optionalStudent.isPresent()) {
+                return ResponseEntity.notFound().build();        }
+            Student student = optionalStudent.get();
+    
+            classroom.addStudent(student);
+        }
+
+        classroom = repository.save(classroom);
+        return ResponseEntity.ok().body(new ClassroomDto(classroom));
     }
 
 

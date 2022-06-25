@@ -24,6 +24,7 @@ public class Guardian {
     private String rg;
     private String dateOfBirth;
     private String phone;
+    
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Student> students;
 

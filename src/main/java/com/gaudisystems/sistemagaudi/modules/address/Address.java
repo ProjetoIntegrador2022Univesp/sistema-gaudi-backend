@@ -23,20 +23,14 @@ public class Address {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotNull @NotEmpty @Size(min = 3, max = 100)
     private String street;
-    @NotNull @NotEmpty @Size(min = 1, max = 6) @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String number;
-    @NotNull @NotEmpty @Size(min = 3, max = 25)
     private String complement;
-    @NotNull @NotEmpty @Size(min = 3, max = 30)
     private String neighborhood;
-    @NotNull @NotEmpty @Size(min = 3, max = 30)
     private String city;
-    @NotNull @NotEmpty @Size(min = 2, max = 2)
     private String state;
-    @NotNull @NotEmpty @Size(min = 10, max = 10)
     private String zipcode;
+    
     @ManyToOne
     private Student student;
 
