@@ -6,11 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.NumberFormat;
 
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
@@ -46,19 +41,6 @@ public class Address {
         this.state = state;
         this.zipcode = zipcode;
     }
-
-  /*   CREATE TABLE ENDERECO(
-	ID_ENDERECO	INT NOT NULL,
-	TIPOLOGRADOURO	VARCHAR(10),
-	NUMERO			VARCHAR(10),
-	COMPLEMENTO		VARCHAR(25),
-	BAIRRO			VARCHAR(30),
-	CIDADE			VARCHAR(30),
-	UF				CHAR(02),
-	CEP				CHAR(10),
-	PRIMARY KEY(ID_ENDERECO)
-); */
-
     
 }
 

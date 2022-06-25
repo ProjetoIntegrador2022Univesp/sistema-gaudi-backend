@@ -1,16 +1,10 @@
 package com.gaudisystems.sistemagaudi.modules.address;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import org.springframework.format.annotation.NumberFormat;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
@@ -21,49 +15,29 @@ import lombok.Data;
 @Table(name = "addresses")
 public class AddressDto {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotNull @NotEmpty @Size(min = 3, max = 100)
     private String street;
-    @NotNull @NotEmpty @Size(min = 1, max = 6) @NumberFormat(style = NumberFormat.Style.NUMBER)
     private String number;
-    @NotNull @NotEmpty @Size(min = 3, max = 25)
     private String complement;
-    @NotNull @NotEmpty @Size(min = 3, max = 30)
     private String neighborhood;
-    @NotNull @NotEmpty @Size(min = 3, max = 30)
     private String city;
-    @NotNull @NotEmpty @Size(min = 2, max = 2)
     private String state;
-    @NotNull @NotEmpty @Size(min = 10, max = 10)
     private String zipcode;
-    @ManyToOne
     private Student student;
 
-    public AddressDto() {
+    public AddressDto(Address address) {
+        this.id = address.getId();
+        this.street = address.getStreet();
+        this.number = address.getNumber();
+        this.complement = address.getComplement();
+        this.neighborhood = address.getNeighborhood();
+        this.city = address.getCity();
+        this.state = address.getState();
+        this.zipcode = address.getZipcode();
+        this.student = address.getStudent();
     }
 
-    public AddressDto(String street, String number, String complement, String neighborhood, String city, String state, String zipcode) {
-        this.street = street;
-        this.number = number;
-        this.complement = complement;
-        this.neighborhood = neighborhood;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
+    public static List<AddressDto> toAddressDto(List<Address> addresses) {
+        return addresses.stream().map(AddressDto::new).collect(Collectors.toList());
     }
-
-  /*   CREATE TABLE ENDERECO(
-	ID_ENDERECO	INT NOT NULL,
-	TIPOLOGRADOURO	VARCHAR(10),
-	NUMERO			VARCHAR(10),
-	COMPLEMENTO		VARCHAR(25),
-	BAIRRO			VARCHAR(30),
-	CIDADE			VARCHAR(30),
-	UF				CHAR(02),
-	CEP				CHAR(10),
-	PRIMARY KEY(ID_ENDERECO)
-); */
-
-    
 }
