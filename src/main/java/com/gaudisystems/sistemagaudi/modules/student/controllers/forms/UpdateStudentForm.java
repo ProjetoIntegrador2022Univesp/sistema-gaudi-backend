@@ -2,7 +2,7 @@ package com.gaudisystems.sistemagaudi.modules.student.controllers.forms;
 
 import java.util.List;
 
-import com.gaudisystems.sistemagaudi.modules.address.Address;
+import com.gaudisystems.sistemagaudi.modules.address.models.Address;
 import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 import com.gaudisystems.sistemagaudi.modules.student.repositories.StudentRepository;

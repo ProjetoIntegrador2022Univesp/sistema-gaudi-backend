@@ -10,12 +10,10 @@ import com.gaudisystems.sistemagaudi.modules.courses.dtos.CourseDto;
 import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentDto;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
-public class ContractDto {
-
+public class InstallmentContractDto {
+    
     private long id;
     private Date startDate;
     private StudentDto student;
@@ -25,7 +23,7 @@ public class ContractDto {
     private int numberOfInstallments;
     private Date startInstallmentDate;
 
-    public ContractDto(Contract contract) {
+    public InstallmentContractDto(Contract contract) {
 
         CourseDto courseDto = new CourseDto(contract.getCourse());
         StudentDto studentDto = new StudentDto(contract.getStudent()); 
@@ -44,5 +42,4 @@ public class ContractDto {
     public static List<ContractDto> toContractDto (List<Contract> contracts) {
         return contracts.stream().map(ContractDto::new).collect(Collectors.toList());
     }
-
 }

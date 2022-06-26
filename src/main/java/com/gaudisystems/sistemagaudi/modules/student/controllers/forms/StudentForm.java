@@ -5,7 +5,7 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.gaudisystems.sistemagaudi.modules.address.Address;
+import com.gaudisystems.sistemagaudi.modules.address.models.Address;
 import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
