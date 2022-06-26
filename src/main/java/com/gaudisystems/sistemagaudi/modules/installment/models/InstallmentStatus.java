@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.parcel.models;
+package com.gaudisystems.sistemagaudi.modules.installment.models;
 
 public enum InstallmentStatus {
     PENDING,

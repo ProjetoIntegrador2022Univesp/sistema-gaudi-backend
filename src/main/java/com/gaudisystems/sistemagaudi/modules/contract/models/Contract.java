@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
-import com.gaudisystems.sistemagaudi.modules.parcel.models.Installment;
+import com.gaudisystems.sistemagaudi.modules.installment.models.Installment;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
 import lombok.Data;
@@ -39,8 +41,9 @@ public class Contract {
     @JsonBackReference
     private Course course;
 
-    @OneToMany(mappedBy = "contract", orphanRemoval = true)
-    private List<Installment> parcels;
+    @OneToMany(mappedBy = "contract", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<Installment> installments;
 
 
     public Contract() {
@@ -54,6 +57,17 @@ public class Contract {
         this.startInstallmentDate = startInstallmentDate;
         this.student = student;
         this.course = course;
+    }
+
+    public Contract(Date startDate, Student student, Course course, BigDecimal totalValue, BigDecimal discountValue, int numberOfInstallments, Date startInstallmentDate, List<Installment> installments) {
+        this.startDate = startDate;
+        this.totalValue = totalValue;
+        this.discountValue = discountValue;
+        this.numberOfInstallments = numberOfInstallments;
+        this.startInstallmentDate = startInstallmentDate;
+        this.student = student;
+        this.course = course;
+        this.installments = installments;
     }
     
 }

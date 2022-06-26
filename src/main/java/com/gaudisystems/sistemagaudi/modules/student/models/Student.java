@@ -11,7 +11,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gaudisystems.sistemagaudi.modules.address.models.Address;
 import com.gaudisystems.sistemagaudi.modules.classrooms.models.Classroom;
 import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;

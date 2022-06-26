@@ -41,6 +41,19 @@ public class Address {
         this.state = state;
         this.zipcode = zipcode;
     }
+
+    public Address(String street, String number, String complement, String neighborhood, String city, String state, String zipcode, Student student) {
+        this.street = street;
+        this.number = number;
+        this.complement = complement;
+        this.neighborhood = neighborhood;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.student = student;
+    }
+
+    
     
 }
 
