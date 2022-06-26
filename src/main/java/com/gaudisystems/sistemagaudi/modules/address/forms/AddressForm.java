@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.address;
+package com.gaudisystems.sistemagaudi.modules.address.forms;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

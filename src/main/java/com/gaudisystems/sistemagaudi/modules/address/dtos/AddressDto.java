@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.address;
+package com.gaudisystems.sistemagaudi.modules.address.dtos;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.gaudisystems.sistemagaudi.modules.address.models.Address;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
 import lombok.Data;

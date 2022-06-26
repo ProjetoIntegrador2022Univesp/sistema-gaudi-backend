@@ -3,7 +3,7 @@ package com.gaudisystems.sistemagaudi.modules.student.controllers.dtos;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.gaudisystems.sistemagaudi.modules.address.AddressDto;
+import com.gaudisystems.sistemagaudi.modules.address.dtos.AddressDto;
 import com.gaudisystems.sistemagaudi.modules.guardian.controllers.dtos.GuardianDto;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 

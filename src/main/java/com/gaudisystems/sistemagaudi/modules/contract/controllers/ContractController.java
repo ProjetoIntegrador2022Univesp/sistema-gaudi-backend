@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.gaudisystems.sistemagaudi.modules.contract.forms.CreateContractForm;
-import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;
 
 
 public interface ContractController {

@@ -28,13 +28,13 @@ public class CreateContractForm {
     @NotNull
     private BigDecimal discountValue;
     @NotNull @DecimalMin("1") @DecimalMax("999")
-    private int parcelsAmount;
+    private int numberOfInstallments;
     @NotNull @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date firstParcelDate;
+    private Date startInstallmentDate;
 
 
     public Contract toContract(Student student, Course course) {
-        return new Contract(startDate, student, course, totalValue, discountValue, parcelsAmount, firstParcelDate);
+        return new Contract(startDate, student, course, totalValue, discountValue, numberOfInstallments, startInstallmentDate);
     }
 
   

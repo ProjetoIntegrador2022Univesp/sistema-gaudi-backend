@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.address;
+package com.gaudisystems.sistemagaudi.modules.address.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

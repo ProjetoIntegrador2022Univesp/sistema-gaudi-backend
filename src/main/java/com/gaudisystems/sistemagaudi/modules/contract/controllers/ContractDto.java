@@ -7,9 +7,7 @@ import java.util.stream.Collectors;
 
 import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;
 import com.gaudisystems.sistemagaudi.modules.courses.dtos.CourseDto;
-import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentDto;
-import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +22,8 @@ public class ContractDto {
     private CourseDto course;
     private BigDecimal totalValue;
     private BigDecimal discountValue;
-    private int parcelsAmount;
-    private Date firstParcelDate;
+    private int numberOfInstallments;
+    private Date startInstallmentDate;
 
     public ContractDto(Contract contract) {
 
@@ -38,8 +36,8 @@ public class ContractDto {
         this.course = courseDto;
         this.totalValue = contract.getTotalValue();
         this.discountValue = contract.getDiscountValue();
-        this.parcelsAmount = contract.getParcelsAmount();
-        this.firstParcelDate = contract.getFirstParcelDate();
+        this.numberOfInstallments = contract.getNumberOfInstallments();
+        this.startInstallmentDate = contract.getStartInstallmentDate();
 
     }
 
