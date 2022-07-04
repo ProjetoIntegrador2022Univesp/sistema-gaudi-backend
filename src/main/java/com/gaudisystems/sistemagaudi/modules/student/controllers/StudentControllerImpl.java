@@ -2,7 +2,6 @@ package com.gaudisystems.sistemagaudi.modules.student.controllers;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -19,14 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.gaudisystems.sistemagaudi.modules.guardian.controllers.dtos.GuardianForm;
-import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
-import com.gaudisystems.sistemagaudi.modules.guardian.repositories.GuardianRepository;
-import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentDto;
-import com.gaudisystems.sistemagaudi.modules.student.controllers.forms.StudentForm;
-import com.gaudisystems.sistemagaudi.modules.student.controllers.forms.UpdateStudentForm;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
-import com.gaudisystems.sistemagaudi.modules.student.repositories.StudentRepository;
+import com.gaudisystems.sistemagaudi.modules.student.models.dtos.StudentDto;
+import com.gaudisystems.sistemagaudi.modules.student.models.forms.CreateStudentForm;
+import com.gaudisystems.sistemagaudi.modules.student.models.forms.UpdateStudentForm;
 import com.gaudisystems.sistemagaudi.modules.student.services.StudentServiceImpl;
 
 @RestController
@@ -35,10 +30,7 @@ public class StudentControllerImpl  implements IStudentController{
 
     @Autowired
     private StudentServiceImpl service;
-    @Autowired
-    private StudentRepository repository;
-    @Autowired
-    private GuardianRepository guardianRepository;
+    
     
     @Override
     @GetMapping
@@ -55,43 +47,25 @@ public class StudentControllerImpl  implements IStudentController{
     @Override
     @Transactional
     @PostMapping
-    public ResponseEntity<StudentDto> save(@RequestBody @Valid StudentForm studentForm, UriComponentsBuilder uriBuilder) {
-        Student student = studentForm.toStudent();
-
-        GuardianForm guardianForm = new GuardianForm();
-        List<Guardian> guardians = guardianForm.toGuardian(student.getGuardian());
-
-        guardianRepository.saveAll(guardians);
-
-        repository.save(student);
-
+    public ResponseEntity<StudentDto> save(@RequestBody @Valid CreateStudentForm form, UriComponentsBuilder uriBuilder) {
+        Student student = service.save(form);
         URI uri = uriBuilder.path("/students/{id}").buildAndExpand(student.getId()).toUri();
         return ResponseEntity.created(uri).body(new StudentDto(student));
-        
     }
+
 
     @Override
     @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<StudentDto> update(@PathVariable long id, @RequestBody @Valid UpdateStudentForm form) {
-        Optional<Student> optional = repository.findById(id);
-        if(!optional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        Student student = form.update(id, repository);
-        return ResponseEntity.ok(new StudentDto(student)); 
+         return service.update(id, form);
     }
 
     @Override  
     @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id) {
-        Optional<Student> optional = repository.findById(id);
-        if(!optional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        repository.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return service.delete(id);
     }
 
    

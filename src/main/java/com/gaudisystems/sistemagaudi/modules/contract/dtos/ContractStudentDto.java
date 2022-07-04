@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.contract.controllers;
+package com.gaudisystems.sistemagaudi.modules.contract.dtos;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -7,30 +7,28 @@ import java.util.stream.Collectors;
 
 import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;
 import com.gaudisystems.sistemagaudi.modules.courses.dtos.CourseDto;
-import com.gaudisystems.sistemagaudi.modules.student.models.dtos.StudentDto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-public class InstallmentContractDto {
-    
+@Setter
+public class ContractStudentDto {
+
     private long id;
     private Date startDate;
-    private StudentDto student;
     private CourseDto course;
     private BigDecimal totalValue;
     private BigDecimal discountValue;
     private int numberOfInstallments;
     private Date startInstallmentDate;
 
-    public InstallmentContractDto(Contract contract) {
+    public ContractStudentDto(Contract contract) {
 
         CourseDto courseDto = new CourseDto(contract.getCourse());
-        StudentDto studentDto = new StudentDto(contract.getStudent()); 
 
         this.id = contract.getId();
         this.startDate = contract.getStartDate();
-        this.student = studentDto;
         this.course = courseDto;
         this.totalValue = contract.getTotalValue();
         this.discountValue = contract.getDiscountValue();
@@ -39,7 +37,8 @@ public class InstallmentContractDto {
 
     }
 
-    public static List<ContractDto> toContractDto (List<Contract> contracts) {
-        return contracts.stream().map(ContractDto::new).collect(Collectors.toList());
+    public static List<ContractStudentDto> toContractDto (List<Contract> contracts) {
+        return contracts.stream().map(ContractStudentDto::new).collect(Collectors.toList());
     }
+
 }

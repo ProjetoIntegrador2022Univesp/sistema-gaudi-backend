@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;
 import com.gaudisystems.sistemagaudi.modules.courses.dtos.CourseDto;
-import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentDto;
+import com.gaudisystems.sistemagaudi.modules.student.models.dtos.StudentDto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.guardian.controllers.dtos;
+package com.gaudisystems.sistemagaudi.modules.guardian.models.dtos;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,14 +8,14 @@ import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 import lombok.Getter;
 
 @Getter
-public class GuardianDto {
+public class GuardianStudentDto {
     private String name;
     private String cpf;
     private String rg;
     private String dateOfBirth;
     private String phone;
 
-    public GuardianDto(Guardian guardian) {
+    public GuardianStudentDto(Guardian guardian) {
         this.name = guardian.getName();
         this.cpf = guardian.getCpf();
         this.rg = guardian.getRg();
@@ -23,8 +23,8 @@ public class GuardianDto {
         this.phone = guardian.getPhone();
     }
 
-    public static List<GuardianDto> toGuardianDto(List<Guardian> guardians) {
-        return guardians.stream().map(GuardianDto::new).collect(Collectors.toList());
+    public static List<GuardianStudentDto> toGuardianDto(List<Guardian> guardians) {
+        return guardians.stream().map(GuardianStudentDto::new).collect(Collectors.toList());
     }
 }
 

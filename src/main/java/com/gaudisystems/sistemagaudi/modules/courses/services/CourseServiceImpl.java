@@ -8,12 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.gaudisystems.sistemagaudi.modules.courses.dtos.CourseDto;
+import com.gaudisystems.sistemagaudi.modules.courses.forms.CreateCourseForm;
 import com.gaudisystems.sistemagaudi.modules.courses.forms.UpdateCourseForm;
 import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 import com.gaudisystems.sistemagaudi.modules.courses.repositories.CourseRepository;
 
 @Service
-public class CourseServiceImpl implements CourseService {
+public class CourseServiceImpl implements ICourseService {
 
     @Autowired
     private CourseRepository repository;
@@ -33,8 +34,9 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course save(Course obj) {
-        return repository.save(obj);
+    public Course save(CreateCourseForm form) {
+        Course course = form.toCourse();
+        return repository.save(course);
     }
 
     @Override

@@ -4,20 +4,23 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.gaudisystems.sistemagaudi.modules.student.controllers.dtos.StudentDto;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
+import com.gaudisystems.sistemagaudi.modules.student.models.dtos.StudentDto;
+import com.gaudisystems.sistemagaudi.modules.student.models.forms.CreateStudentForm;
+import com.gaudisystems.sistemagaudi.modules.student.models.forms.UpdateStudentForm;
 
 public interface IStudentService {
     
     public List<StudentDto> findAll();
 
-    public void save(Student student);
+    public ResponseEntity<StudentDto> findById(long id);
 
-    public void update(Student student);
+    public Student save(CreateStudentForm form);
 
-    public void delete(Student student);
+    public ResponseEntity<StudentDto> update(long id, UpdateStudentForm form);
 
-    public ResponseEntity<StudentDto> findById(Long id);
+    public ResponseEntity<Void> delete(long id);
+
 
     
 }

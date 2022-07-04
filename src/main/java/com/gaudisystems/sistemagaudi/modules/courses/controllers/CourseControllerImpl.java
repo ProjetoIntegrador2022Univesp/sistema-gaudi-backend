@@ -48,9 +48,7 @@ public class CourseControllerImpl implements CourseController {
     @Transactional
     @PostMapping
     public ResponseEntity<CourseDto> save(@RequestBody @Valid CreateCourseForm form, UriComponentsBuilder uriBuilder) {
-        Course course = form.toCourse();
-        System.out.println("course: " + course.getName());
-        service.save(course);
+        Course course = service.save(form);
         URI uri = uriBuilder.path("/courses/{id}").buildAndExpand(course.getId()).toUri();
         return ResponseEntity.created(uri).body(new CourseDto(course));
     }

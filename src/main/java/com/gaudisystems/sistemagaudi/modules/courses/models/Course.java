@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gaudisystems.sistemagaudi.modules.contract.models.Contract;
 import com.gaudisystems.sistemagaudi.modules.coursemodules.models.CourseModule;
 
@@ -26,11 +25,10 @@ public class Course {
     private String name;
     private String description;
 
-	@OneToMany(mappedBy = "course")
-	@JsonManagedReference
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CourseModule> courseModules;
 
-	@OneToMany(mappedBy = "course", cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Contract> contract;
 
 

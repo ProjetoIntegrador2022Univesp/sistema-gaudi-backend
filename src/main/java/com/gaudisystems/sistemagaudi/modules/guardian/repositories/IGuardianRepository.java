@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.gaudisystems.sistemagaudi.modules.guardian.models.Guardian;
 
-public interface GuardianRepository extends JpaRepository<Guardian, Long> {
+public interface IGuardianRepository extends JpaRepository<Guardian, Long> {
 }
 

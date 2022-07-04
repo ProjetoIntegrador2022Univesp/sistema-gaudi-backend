@@ -3,10 +3,10 @@ package com.gaudisystems.sistemagaudi.modules.classrooms.models;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,10 +33,11 @@ public class Classroom {
     private LocalDate endDate;
     private String startTime;
     private String endTime;
+    
     @Enumerated(EnumType.STRING)
     private Weekday weekday;
 
-    @ManyToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Student> students;
 
     @ManyToMany

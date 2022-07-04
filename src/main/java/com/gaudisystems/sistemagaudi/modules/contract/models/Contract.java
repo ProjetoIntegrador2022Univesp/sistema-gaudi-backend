@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,17 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gaudisystems.sistemagaudi.modules.courses.models.Course;
 import com.gaudisystems.sistemagaudi.modules.installment.models.Installment;
 import com.gaudisystems.sistemagaudi.modules.student.models.Student;
 
 import lombok.Data;
 
-@Data
 @Entity
+@Data
 @Table(name = "contracts")
+
 public class Contract {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,15 +34,13 @@ public class Contract {
     private int numberOfInstallments;
     private Date startInstallmentDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Student student;
     
     @ManyToOne
-    @JsonBackReference
     private Course course;
 
-    @OneToMany(mappedBy = "contract", fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
     private List<Installment> installments;
 
 

@@ -1,6 +1,7 @@
 package com.gaudisystems.sistemagaudi.modules.address.models;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,8 +17,11 @@ import lombok.Data;
 @Table(name = "addresses")
 public class Address {
 
+    static final long serialVersionUID = 1L;
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String street;
     private String number;
     private String complement;
@@ -26,20 +30,10 @@ public class Address {
     private String state;
     private String zipcode;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Student student;
 
     public Address() {
-    }
-
-    public Address(String street, String number, String complement, String neighborhood, String city, String state, String zipcode) {
-        this.street = street;
-        this.number = number;
-        this.complement = complement;
-        this.neighborhood = neighborhood;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
     }
 
     public Address(String street, String number, String complement, String neighborhood, String city, String state, String zipcode, Student student) {

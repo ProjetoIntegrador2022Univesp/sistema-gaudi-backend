@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +31,8 @@ public class Installment {
     @Enumerated(EnumType.STRING)
     private InstallmentStatus status;
 
-    @ManyToOne
-    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "installment-contract")
     private Contract contract;
 
     public Installment() {

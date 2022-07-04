@@ -22,6 +22,8 @@ import lombok.Data;
 @Data
 @Table(name = "students")
 public class Student {
+    
+    static final long serialVersionUID = 1L;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -32,41 +34,43 @@ public class Student {
     private String phone;
     private String birthdate;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses;
 
+     @ManyToMany(mappedBy = "students", cascade = CascadeType.ALL)
+    private List<Guardian> guardians;
+
     @ManyToMany(mappedBy = "students", cascade = CascadeType.ALL)
-    private List<Guardian> guardian;
+    private List<Classroom> classrooms;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Classroom> classroom;
-
-    @OneToMany(mappedBy = "student")
-    private List<Contract> contract;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Contract> contracts; 
 
 
     public Student() {
     }
 
-    public Student(String name, String email, String cpf, String rg, String phone, List<Address> addresses, String birthdate) {
+    public Student(String name, String email, String cpf, String rg, String phone, String birthdate, List<Address> addresses) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.rg = rg;
         this.phone = phone;
-        this.addresses = addresses;
         this.birthdate = birthdate;
+        this.addresses = addresses;
     }
 
-    public Student(String name, String email, String cpf, String rg, String phone, List<Address> addresses,
-            String birthdate, List<Guardian> guardian) {
+    public Student(String name, String email, String cpf, String rg, String phone, String birthdate, List<Address> addresses, List<Guardian> guardians, List<Classroom> classrooms, List<Contract> contracts) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
         this.rg = rg;
         this.phone = phone;
-        this.addresses = addresses;
         this.birthdate = birthdate;
-        this.guardian = guardian;
+        this.addresses = addresses;
+        this.guardians = guardians;
+        this.classrooms = classrooms;
+        this.contracts = contracts;
     }
+   
 }

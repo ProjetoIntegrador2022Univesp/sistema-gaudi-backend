@@ -1,4 +1,4 @@
-package com.gaudisystems.sistemagaudi.modules.guardian.controllers.dtos;
+package com.gaudisystems.sistemagaudi.modules.guardian.models.dtos;
 
 import java.util.ArrayList;
 import java.util.List;

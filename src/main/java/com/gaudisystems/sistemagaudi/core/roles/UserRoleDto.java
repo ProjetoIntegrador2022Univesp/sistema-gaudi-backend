@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class UserRoleDto {
 
-    private Long id;
+    private long id;
     private String name;
 
     public UserRoleDto(UserRole role) {
