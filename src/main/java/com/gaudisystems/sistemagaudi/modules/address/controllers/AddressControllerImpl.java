@@ -41,7 +41,6 @@ public class AddressControllerImpl implements IAddressController {
     @Override
     @GetMapping
     public List<AddressDto> findAll() {
-        
             List<Address> addresses = service.findAll();
             return AddressDto.toAddressDto(addresses);
             
@@ -51,8 +50,6 @@ public class AddressControllerImpl implements IAddressController {
     @Override
     @GetMapping("/{id}")
     public ResponseEntity<AddressDto> findById(@PathVariable long id) {
-        System.out.println("id: " + id);
-
         return service.findById(id);
     }
 
